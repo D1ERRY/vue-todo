@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Основы Vue</title>
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="my.css" />
+  </head>
+  <body>
+    <div class="container" id="app" v-cloak>
+      <div class="card">
+        <h1 class="">{{title}}</h1>
+        <div class="form-control">
+          <input
+            autofocus
+            type="text"
+            :placeholder="placeholder"
+            v-model="inputValue"
+            @keypress.enter="!checkBox ? addNewNote(): inputValue= ''"
+          />
+        </div>
+        <button class="btn" @click="addNewNote">Добавить</button>
+        <input v-model="checkBox" type="checkbox" class="checkbox" />
+        &nbsp;
+        <span class="lbl">Поиск</span>
+        <hr />
+        <ul class="list" v-if="notes.length != 0">
+          <li @click="changeText(idx)" class="list-item" v-for="(note,idx) in checkBox ? filerList : notes ">
+            <span :class="{'primary': true, 'bold': note.length > 5}">{{idx+1}}. {{note}} </span>
+
+            <button class="btn danger" @click.stop="removeNote(idx)">Удалить</button>
+          </li>
+          <hr />
+          <strong>Общее кол-во заметок: {{notes.length}}</strong>
+          | Версия: 0.2.1
+        </ul>
+        <div v-else>Заметок пока нет</div>
+      </div>
+    </div>
+    <!-- VUE load -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
