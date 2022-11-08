@@ -41,6 +41,17 @@ input[type="checkbox"]:checked:after {
   left: 6px;
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.menu a:hover {
+  color: #2c3e50;
+  transition: all 0.2s ease-in-out;
+}
+
 .name {
   font-size: 2.2rem;
   font-weight: 500;

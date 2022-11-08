@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>Основы Vue</title>
-    <link rel="stylesheet" href="theme.css" />
-    <link rel="stylesheet" href="my.css" />
+    <link rel="stylesheet" href="./styles/theme.css" />
+    <link rel="stylesheet" href="./styles/my.css" />
   </head>
   <body>
     <div class="container" id="app" v-cloak>
-      <div class="card">
+      <div class="card menu">
+        <a @click="isTodo = true" href="#">Todo</a>
+        <a @click="isTodo = false" href="#">About</a>
+      </div>
+      <div v-if="isTodo" class="card">
         <h1 class="">{{title}}, <input placeholder="name here" v-model="userName" class="name" type="text" /></h1>
         <div class="form-control">
           <input
@@ -38,13 +42,26 @@
             <strong key="noteCountHide" v-if="!checkBox">Общее кол-во заметок: {{notes.length}}</strong>
             <strong key="noteSearchHide" v-else>Найденно: {{filerList.length}}</strong>
           </transition>
-          | Версия: 0.2.1
+          | Версия: {{version}}
         </div>
         <div v-else>Заметок нет</div>
       </div>
+      <div v-else class="card">
+        <p>
+          Привет, я <a href="#">d1erry</a> это моё первое приложение с использование Vue3Js. <br />
+          Надеюсь оно тебе понравиться 😊
+        </p>
+        <div class="card center">
+          <h3><a href="#">My GitHub profile ✔</a></h3>
+        </div>
+        <div class="card">
+          <strong>application version: {{version}}</strong>
+        </div>
+      </div>
     </div>
     <!-- VUE load -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
     <script type="module" src="app.js"></script>
   </body>
 </html>

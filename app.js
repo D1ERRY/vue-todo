@@ -1,12 +1,14 @@
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
-const App = new Vue({
+const App = Vue.createApp({
   el: "#app",
   data() {
     return {
       placeholder: "Введите название заметки",
       title: "Список заметок",
       inputValue: "",
+      version: "0.2.2",
       checkBox: false,
+      isTodo: true,
       userName: "",
       notes: [
         // {
@@ -78,6 +80,7 @@ const App = new Vue({
     if (localStorage.userName) {
       this.userName = localStorage.userName;
     }
+    console.log(this.version);
   },
   watch: {
     inputValue(value) {
@@ -96,4 +99,4 @@ const App = new Vue({
       // console.log(value);
     },
   },
-});
+}).mount("#app");
